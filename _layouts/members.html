@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+{% include head.html %}
+
+<body>
+
+	{% include header.html %}
+
+	<div id="main">
+
+		{{ content }}
+
+		{% for member in site.members %}
+			<h3><a id="listingurl" href="{{ member.url }}">{{ member.title }}</a></h3>
+		{% endfor %}
+
+	</div>
+
+</body>
+
+</html>

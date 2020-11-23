@@ -1,0 +1,34 @@
+---
+title: Articles
+layout: articles
+---
+
+<h1>Articles</h1>
+
+<p>This is a collection of all articles published on this website.</p>
+
+<h2>Sort by Category</h2>
+
+<div style="text-align: left">
+
+	{% for category in site.categories %}
+
+		<h3 style="display: inline-block; margin-top: 0; margin-bottom: 0;">
+			<a id="listingurl" href="{{ category.url }}">{{ category.title }}</a>
+		</h3>
+
+	{% endfor %}
+
+</div>
+
+<h2>Latest Articles</h2>
+
+{% for post in paginator.posts %}
+
+	<h3 style="margin-bottom: 0;"><a id="listingurl" href="{{ post.url }}">{{ post.title }}</a></h3>
+	{% include postmeta.html categories=post.categories date=post.date author=post.author push=true %}
+
+{% endfor %}
+
+<br>
+<a id="listingurl" href="{{ paginator.previous_page_path | relative_url }}">&lt;&lt;</a><span style="padding-left: 8px; padding-right: 8px;">{{ paginator.page }}/{{ paginator.total_pages }}</span><a id="listingurl" href="{{ paginator.next_page_path | relative_url }}">&gt;&gt;</a>

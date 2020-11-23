@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+{% include head.html %}
+
+<body>
+
+	{% include header.html %}
+
+	<div id="main">
+
+		{{ content }}
+
+		{% assign nonzero = false %}
+		{% for post in site.posts %}
+
+			{% if post.author == page.author %}
+
+				{% unless post.categories contains "announcements" %}
+
+					{% if nonzero == false %}
+						<h2>Authored Articles</h2>
+						{% assign nonzero = true %}
+					{% endif %}
+
+					<h3 style="margin-bottom: 0;"><a id="listingurl" href="{{ post.url }}">{{ post.title }}</a></h3>
+					{% include postmeta.html categories=post.categories date=post.date author=post.author push=true %}
+
+				{% endunless %}
+
+			{% endif %}
+
+		{% endfor %}
+
+	</div>
+
+</body>
+
+</html>

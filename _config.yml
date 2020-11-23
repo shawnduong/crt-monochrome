@@ -1,0 +1,24 @@
+title: Title
+
+permalink: /articles/categories/:categories/:year/:month/:day/:title
+paginate: 10
+paginate_path: /articles/page:num/
+
+highlighter: rouge
+markdown: kramdown
+
+kramdown:
+  input: GFM
+  auto_ids: true
+  syntax_highlighter: rouge
+
+collections:
+  members:
+    output: true
+    permalink: /:collection/:name
+  categories:
+    output: true
+    permalink: /articles/:collection/:name
+
+plugins:
+  - jekyll-paginate

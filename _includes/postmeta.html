@@ -1,0 +1,33 @@
+{% if include.push == true %}
+	{% assign lpad = 8 %}
+{% endif %}
+
+{% assign first = true %}
+{% for category in include.categories %}
+	{% if first %}
+		<h5 style="margin-top: 0; margin-bottom: 0; display: inline-block; padding-left: {{ lpad }}px">
+			<span>Categories: </span><a href="/articles/categories/{{ category }}">{{ category }}</a>
+		</h5>
+		{% assign first = false %}
+	{% else %}
+		<h5 style="margin-left: -2px; margin-top: 0; margin-bottom: 0; display: inline-block; padding-left: 0px">
+			<span>&& </span><a href="/articles/categories/{{ category }}">{{ category }}</a>
+		</h5>
+	{% endif %}
+{% endfor %}
+
+<h5 style="margin-top: 0; margin-bottom: 0; padding-left: {{ lpad }}px;">{{ include.date | date: "%Y-%m-%d" }}</h5>
+
+{% assign authorExists = false %}
+{% for member in site.members %}
+	{% if member.author == include.author %}
+		{% assign authorExists = true %}
+		{% break %}
+	{% endif %}
+{% endfor %}
+
+{% if authorExists == true %}
+	<h5 style="margin-top: 0; margin-bottom: 0; padding-left: {{ lpad }}px;">by <a href="/members/{{ include.author }}">{{ include.author }}</a></h2>
+{% else %}
+	<h5 style="margin-top: 0; margin-bottom: 0; padding-left: {{ lpad }}px;">by {{ include.author }}</a></h2>
+{% endif %}

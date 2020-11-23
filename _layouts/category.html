@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+{% include head.html %}
+
+<body>
+
+	{% include header.html %}
+
+	<div id="main">
+
+		{{ content }}
+
+		<h2>Articles</h2>
+
+		{% for post in site.posts %}
+
+			{% if post.categories contains page.category %}
+
+				<h3 style="margin-bottom: 0;"><a id="listingurl" href="{{ post.url }}">{{ post.title }}</a></h3>
+				{% include postmeta.html categories=post.categories date=post.date author=post.author push=true %}
+				
+			{% endif %}
+
+		{% endfor %}
+
+	</div>
+
+</body>
+
+</html>
