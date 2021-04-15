@@ -1,6 +1,7 @@
-title: Title
+title: Your Website Title Here
+description: Your Website Description Here
 
-permalink: /articles/categories/:categories/:year/:month/:day/:title
+permalink: /articles/categories/:categories/:year-:month-:day/:title
 paginate: 10
 paginate_path: /articles/page:num/
 
